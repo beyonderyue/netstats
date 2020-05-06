@@ -8,7 +8,7 @@ docker-test:
 	docker run gochain/netstats-builder go test ./...
 
 run:
-	docker run --rm -it -p 3000:3000 -e WS_SECRET=$(WS_SECRET) gcr.io/gochain-core/netstats
+	docker run --rm -it -p 8080:3000 -e WS_SECRET=$(WS_SECRET) --name ethstat2 gcr.io/gochain-core/netstats
 
 release: docker
 	./release.sh

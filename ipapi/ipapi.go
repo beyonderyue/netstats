@@ -39,7 +39,7 @@ func (s *Client) GeoByIP(ctx context.Context, ip string) (*netstats.Geo, error) 
 		//RegionName  string      `json:"regionName"`
 		City string      `json:"city"`
 		Lat  json.Number `json:"lat"`
-		Long json.Number `json:"long"`
+		Long json.Number `json:"lon"`
 	}
 	resp, err := http.Get(s.url + ip)
 	if err != nil {

@@ -1,6 +1,6 @@
 # Build in a stock Go builder container
 FROM golang:1.13-alpine as builder
-
+RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories
 RUN apk --no-cache add build-base git bzr mercurial gcc linux-headers npm
 RUN npm install -g grunt-cli
 
@@ -23,10 +23,10 @@ RUN go build -o /tmp/netstats ./cmd/netstats
 
 # Pull all binaries into a second stage deploy alpine container
 FROM alpine:latest
-
+RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /tmp/netstats /usr/local/bin/netstats
 
 WORKDIR /netstats
 
-CMD ["netstats", "-strict"]
+CMD ["netstats", "-strict=false"]
