@@ -12,6 +12,7 @@ RUN cd /usr/local/bin \
 ENV D=/src/netstats
 WORKDIR $D
 # cache dependencies
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 ADD go.mod $D
 ADD go.sum $D
 RUN go mod download
