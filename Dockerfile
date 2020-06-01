@@ -6,8 +6,8 @@ RUN npm install -g grunt-cli
 
 ENV GENESIS_VERSION 0.2.1
 RUN cd /usr/local/bin \
-	&& wget https://github.com/benbjohnson/genesis/releases/download/v0.2.1/genesis-v0.2.1-linux-amd64.tar.gz && ls \
-	&& tar zxvf genesis-v0.2.1-linux-amd64.tar.gz
+        && wget https://github.com/benbjohnson/genesis/releases/download/v0.2.1/genesis-v0.2.1-linux-amd64.tar.gz && ls \
+        && tar zxvf genesis-v0.2.1-linux-amd64.tar.gz
 
 ENV D=/src/netstats
 WORKDIR $D
